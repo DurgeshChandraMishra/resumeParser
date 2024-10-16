@@ -4,7 +4,6 @@ from PyPDF2 import PdfReader
 import streamlit as st
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_community.document_loaders
 from langchain_groq import ChatGroq
 load_dotenv()
 
