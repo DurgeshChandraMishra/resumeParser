@@ -89,16 +89,19 @@ st.header("Resume Parser Support💁")
 st.title("Resume Parser App")
 groq_api_key = st.sidebar.text_input("Groq API key",type="password")
 # call Ollama llama3 model
-llm = ChatGroq(model="llama3-8b-8192",disable_streaming=True)
-#output parser
-output_parser = StrOutputParser()
-chain = prompt | llm | output_parser
+if groq_api_key :
+      
+  llm = ChatGroq(model="llama3-8b-8192",disable_streaming=True,api_key =groq_api_key)
+  #output parser
+  output_parser = StrOutputParser()
+  chain = prompt | llm | output_parser
 
-resume_file = st.file_uploader('Please upload your resume')
+  resume_file = st.file_uploader('Please upload your resume')
 
-if st.button("Submit & Process"):
+  if st.button("Submit & Process"):
             with st.spinner("Processing..."):
                 raw_text = get_pdf_data(resume_file)
                 st.write(chain.invoke({'resume': raw_text}))
                 st.success("Done")
-
+else:
+     st.write("Please enter groq api key to start")
