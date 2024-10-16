@@ -1,12 +1,8 @@
-import os
-from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 import streamlit as st
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_groq import ChatGroq
-load_dotenv()
-
 
 def get_pdf_data(pdf_doc):
     text = ""
